@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 Wish</title>
+    <style>
+        /* --- CSS STYLING --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            /* Cool Gradient: Black -> Deep Blue -> White Accent */
+            background: linear-gradient(135deg, #000000 0%, #02111b 40%, #004e92 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Glassmorphism Container */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 500px;
+            z-index: 10; /* Keep card above bubbles */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Input Page Styles */
+        h2 {
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+        }
+
+        button {
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.6);
+        }
+
+        /* Wish Page Styles */
+        .hidden {
+            display: none;
+        }
+
+        .wishes-content h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            /* Text Gradient */
+            background: -webkit-linear-gradient(#fff, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .name-highlight {
+            color: #00c6ff;
+            text-shadow: 0 0 20px #00c6ff;
+            display: block;
+            margin-top: 10px;
+            font-size: 2.5rem;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-top: 25px;
+            font-weight: 300;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        .signature {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #4facfe;
+        }
+
+        /* Floating Animation for Card */
+        @keyframes float {
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-10px); }
+            100% { transform: translatey(0px); }
+        }
+
+        /* --- BUBBLE & HEART ANIMATION CSS --- */
+        .floating-object {
+            position: absolute;
+            bottom: -50px;
+            z-index: 1; /* Behind the card */
+            animation: rise linear forwards;
+            pointer-events: none; /* Mouse clicks go through them */
+        }
+
+        .heart {
+            color: white;
+            font-size: 20px;
+            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .bubble {
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            opacity: 0.6;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card" id="inputSection">
+        <h2>Who is this wish for?</h2>
+        <input type="text" id="username" placeholder="Enter Friend's Name" autocomplete="off">
+        <button onclick="generateWish()">Wish Now</button>
+    </div>
+
+    <div class="card hidden" id="wishSection">
+        <div class="wishes-content">
+            <h1>Happy New Year 2026 <span class="name-highlight" id="displayName"></span></h1>
+            
+            <p class="message">
+                "Happy New Year 2026! Wishing you and your family a year full of peace, health, and happiness. Looking forward to another year of working together.
+                <span class="signature">– Vinay</span>
+            </p>
+            
+            <button onclick="location.reload()" style="margin-top:30px; padding: 10px 30px; font-size: 0.9rem; background: transparent; border: 1px solid rgba(255,255,255,0.3); opacity: 0.7;">Back</button>
+        </div>
+    </div>
+
+    <script>
+        /* --- JAVASCRIPT LOGIC --- */
+        
+        function generateWish() {
+            const nameInput = document.getElementById('username').value;
+            
+            if (nameInput.trim() === "") {
+                alert("Please enter a name!");
+                return;
+            }
+
+            document.getElementById('displayName').innerText = nameInput;
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('wishSection').classList.remove('hidden');
+
+            // Start the continuous Bubble and Heart animation
+            startContinuousEffects();
+        }
+
+        // Allow pressing "Enter"
+        document.getElementById("username").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                generateWish();
+            }
+        });
+
+        // Function to create continuous bubbles and hearts
+        function startContinuousEffects() {
+            setInterval(createFloatingElement, 300); // Create a new element every 300ms
+        }
+
+        function createFloatingElement() {
+            const el = document.createElement('div');
+            el.classList.add('floating-object');
+
+            // Randomly decide if it's a Heart or a Bubble
+            const isHeart = Math.random() > 0.5;
+
+            if (isHeart) {
+                el.classList.add('heart');
+                el.innerHTML = '&#10084;'; // Unicode for Heart
+                el.style.fontSize = Math.random() * 20 + 10 + 'px'; // Random size
+            } else {
+                el.classList.add('bubble');
+                const size = Math.random() * 30 + 10; // Random size
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+
+            // Random Position (Left 0 to 100vw)
+            el.style.left = Math.random() * 100 + 'vw';
+            
+            // Random Animation Speed (3s to 8s)
+            el.style.animationDuration = Math.random() * 5 + 3 + 's';
+            
+            document.body.appendChild(el);
+
+            // Remove the element from DOM after animation finishes to prevent memory leaks
+            setTimeout(() => {
+                el.remove();
+            }, 8000);
+        }
+    </script>
+</body>
+</html>
